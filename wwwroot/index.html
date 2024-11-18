@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello from Kubernetes</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        color: #333333;
+        background: radial-gradient(at 20% 20%, #fffff0, transparent 50%),
+          radial-gradient(at 80% 20%, #fffff1, transparent 50%),
+          radial-gradient(at 20% 80%, #fffff2, transparent 50%),
+          radial-gradient(at 80% 80%, #fffff3, transparent 50%),
+          radial-gradient(at 50% 50%, #fffff4, transparent 50%);
+      }
+
+      .container {
+        text-align: center;
+        max-width: 1000px;
+        width: 90%;
+        height: 95vh; /* Set height to 85% of viewport */
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0.6
+        ); /* Semi-transparent background */
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        margin: 1rem auto;
+        display: flex;
+        flex-direction: column;
+        backdrop-filter: blur(10px); /* Frosted glass effect */
+      }
+
+      h1 {
+        font-size: 2rem;
+        color: #383875;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 1.1rem;
+        margin-top: 2em;
+        color: #666;
+      }
+
+      a {
+        color: #3333cc;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .table-container {
+        flex-grow: 1;
+        overflow-y: auto;
+        height: calc(95vh - 8rem); /* Adjust height to fit within container */
+        margin-top: 1rem; /* Adds spacing above the table */
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: "Courier New", Courier, monospace;
+        color: #333;
+        table-layout: fixed;
+      }
+
+      th,
+      td {
+        padding: 0.5rem 0.75rem; /* Tighter row padding */
+        border: 1px solid #dddddd;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      th {
+        background-color: rgba(
+          238,
+          238,
+          238,
+          0.85
+        ); /* Semi-transparent for frosted effect */
+        position: sticky; /* Sticks the header to the top */
+        top: 0;
+        height: 25px; /* Consistent height for header */
+        backdrop-filter: blur(10px); /* Frosted effect on header */
+        z-index: 1; /* Ensures header is above other rows */
+      }
+
+      td {
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0.8
+        ); /* Slightly transparent to match frosted effect */
+      }
+
+      tr:hover td {
+        background-color: #f0f8ff;
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Hello from {{podName}}</h1>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Key</th>
+              <th>Value</th>
+              <th>Source</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{configurationRows}}
+          </tbody>
+        </table>
+      </div>
+      <p>
+        hello-k8s on
+        <a href="https://github.com/filleokus/hello-k8s" target="_blank"
+          >GitHub</a
+        >
+        |
+        <a href="/api/env" target="_blank">/api/env</a>
+      </p>
+    </div>
+  </body>
+</html>

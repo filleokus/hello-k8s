@@ -1,0 +1,6 @@
+@hello_k8s_HostAddress = http://localhost:1337
+
+GET {{hello_k8s_HostAddress}}/api/env
+Accept: application/json
+
+###
